@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>Memesearch! // 404 :/</title>
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+<div id="home-link-div">
+<a href="https://msrch.herokuapp.com/" id="memesearch-link">memesearch</a>
+<a href="https://msrch.herokuapp.com/" id="memesearch-link-mobile">memesearch</a>
+</div>
+	<nav>
+{{#if session.loggedIn}}
+<a href="https://msrch.herokuapp.com/profile" id="username-link">{{session.username}}</a>
+<a href="https://msrch.herokuapp.com/logout">log out</a>
+<a href="https://msrch.herokuapp.com/uploadpage">upload</a>
+
+{{else}}
+
+<a id="create-acct-link" href="https://msrch.herokuapp.com/createacct">create account</a>
+<a href="https://msrch.herokuapp.com/login">log in</a>
+{{/if}}
+</nav>
+
+
+
+	<div id="my-memes-container">
+
+		<div id="notfound-404-div">
+			👁 4 👄 4 👁<br>
+			not found
+
+		</div>
+	</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="/profile.js"></script>
+
+
+</body>
+
+<!-- enctype ="multipart/form-data" method="post" action="/upload"

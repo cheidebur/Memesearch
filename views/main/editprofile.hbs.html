@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+	    <link rel="stylesheet" type="text/css" href="styles.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+	<nav>
+
+	<a href="http://localhost:8080/">home</a>/
+	<a href="http://localhost:8080/uploadpage">upload</a>/
+	<a href="http://localhost:8080/logout">logout</a>
+</nav>
+
+<div id="top-container">
+
+	<div id="my-profile-container">
+		<p id="edit-profile"><a href="">edit</a></p>
+		<img id="profile-avvy" src="{{info.avvy}}">
+	<i class="fas fa-user"></i><h2 id="profile-username">{{info.username}}</h2>
+
+	<p id="profile-blurb">{{info.blurb}}</p>
+	</div>
+
+	<div id="my-memes-container">
+		<form id="meme-find-form">
+		<input type="text" name="my-memes-search" placeholder="Search my memes">
+		<button id="my-find-button">Go</button>
+		</form>
+	</div>
+
+</div>
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+<script src="profile.js"></script>
+
+
+</body>
+
+<!-- enctype ="multipart/form-data" method="post" action="/upload"

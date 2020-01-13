@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memesearch!</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+<nav>
+{{#if session}}
+<a href="{{hostName}}/profile" id="username-link">{{session.username}}</a>
+<a href="https://msrch.herokuapp.com/logout">log out</a>
+{{else}}
+<a id="create-acct-link" href="{{hostName}}/createacct" id="create-link">create account</a>
+<a href="https://msrch.herokuapp.com/login">log in</a>
+{{/if}}
+</nav>
+<h1 class="memesearch-header"><a href="https://msrch.herokuapp.com/">Memesearch</a></h1>
+<form id="memeFindForm" action="javascript:void(0);">
+<input type="text" id="memeFindQuery" placeholder="Search tags/captions">
+<button id="find-button">Go</button>
+</form>
+{{#if session}}
+<div id="root" class="root-logged-in"></div>
+{{else}}
+<div id="root" class="root-not-logged-in"></div>
+{{/if}}
+<div id="scrolltop">
+<i class="fas fa-arrow-up"></i>
+</div>
+<script id = "no-acct-template" type = "text/x-handlebars-template">
+<div id='no-account'>
+<p id="fuck-off">❌close</p>
+<p id="no-account-text">
+looks like u have no acct?? ://<br>
+<a href="https://msrch.herokuapp.com/createacct">make one, sweaty ;)</a>
+<p id='or-login'>or <a href="https://msrch.herokuapp.com/login">log in :S</a></p>
+</p>
+</div>
+</script>
+<script id="meme-card-template" type="text/x-handlebars-template">
+<div class="card">
+<p class="fav-button" id="{{meme.memeId}}" name="{{meme.imageUrl}}">❤️ add to favorites</p>
+<a href="{{memelink}}">
+<img src="{{meme.imageUrl}}" class="meme-result">
+</a>
+<a href="{{userlink}}" class="memeauthorlink">
+<p class="memeauthorlabel">
+{{meme.author}}
+</p>
+</a>
+</div>
+
+</script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="scripts.js"></script>
+
+</body>
+</html>

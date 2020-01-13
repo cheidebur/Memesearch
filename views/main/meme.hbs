@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memesearch! // meme</title>
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+<div id="home-link-div">
+<a href="https://msrch.herokuapp.com/" id="memesearch-link">memesearch</a>
+<a href="https://msrch.herokuapp.com/" id="memesearch-link-mobile">m</a>
+</div>
+<nav>
+{{#if session}}
+<a href="https://msrch.herokuapp.com/profile" id="username-link">{{session.username}}</a>
+<a href="https://msrch.herokuapp.com/logout">log out</a>
+{{else}}
+<a id="create-acct-link" href="https://msrch.herokuapp.com/createacct">create account</a>
+<a href="https://msrch.herokuapp.com/login">log in</a>
+{{/if}}
+</nav>
+	<div id="meme-comments-wrap">	
+		<div class="memepage-memecontainer">
+			<div id="meme-top-wrap">
+				<div class="meme-postedby">
+					<img id="uploadedby-avvy" src="{{meme.author.avvy}}"><br>
+					<p id="uploadedby-uname">
+						<a href="https://msrch.herokuapp.com/users/{{meme.imageUploader}}">{{meme.imageUploader}}</a>
+					</p>
+				</div>
+				<p id="meme-clout">{{meme.favorited}}</p>
+			</div>
+			<img class="memepage-memeimg" src="{{meme.imageUrl}}">
+			{{#if authorCheck}}
+				<div id="control-wrap">
+					<form method="post" action="/deletememe">
+						<input type="hidden"  name="memeId" value="{{meme.memeId}}">
+						<button type="submit" id="delete-meme">delete</button>
+					</form>
+					<div id="control-edit-wrap">
+						<form method="POST" action="/edittags">
+							<input type="text" id="tag-edit-box" name="editedtags" value="{{meme.imageTags}}"><br>
+							<input type="hidden"  name="memeId" value="{{meme.memeId}}">
+							<button id="tag-edit-button" type="submit">edit tags/caption</button>
+						</form>
+					</div>
+				</div>
+			{{else}}
+			<p class="memepage-memetags">{{meme.imageTags}}</p>
+			{{/if}}
+		</div>
+		<div id="content-comment-wrap">
+				<div id="write-comment">
+					<form action="/postcomment" method="POST">
+						<input type="text" autocomplete="off" id="commentbox" name="commenttext" placeholder="write something" maxlength="300"><br>
+						<input type="submit" value="post"id="postcomment-button">
+						<input type="hidden" id="memeId" name="memeId" value="{{meme.memeId}}">
+					</form>
+				</div>
+				<div id="comments">
+				</div>
+		</div>
+	</div>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js" type="text/javascript"></script>
+
+<script id="cmttemplate" type="text/x-handlebars-template">
+<div class="comment-wrap" id="wrap-\{{commentId}}">
+
+	<div id="comment-head">
+		<p id="cmt-by">
+			<img src="\{{userAvvy}}" id="cmt-avvy">
+			<p id="cmt-clout">\{{clout}}</p>
+			<a id="cmt-user-link" href="https://msrch.herokuapp.com/users/\{{userLink}}">\{{authorName}}</a>:
+		</p>
+		{{#if authorCheck}}
+		<p class="delete-comment" id="\{{commentId}}">❌</p>
+		{{/if}}
+	</div>
+
+	<div id="comment-body">
+		<p id="comment-text">
+			\{{comment}}
+		</p>
+	</div>
+
+</div>
+
+</script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="/commentscript.js"></script>
+</body>
+
+<!-- enctype ="multipart/form-data" method="post" action="/upload"

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Memesearch! // Register</title>
+ <link rel="stylesheet" type="text/css" href="/styles.css">
+ <link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+<div id="home-link-div">
+<a href="https://msrch.herokuapp.com/" id="memesearch-link">memesearch</a>
+<a href="https://msrch.herokuapp.com/" id="memesearch-link-mobile">m</a>
+</div>
+{{log token}}
+<div class="login-container-div">
+
+<h2 class="action-header">confirm your email ._.</h2><br>
+<form class="login-form" action="/confirmation"  method="post">
+  <input id= "loginemail" type="text" name="loginemail" placeholder="enter ur email"><br>
+  <input type="hidden" name="token" value="{{token}}">
+
+  <input type="submit" class="login-submit">
+  </form>
+  <!-- or resend auth code
+</div>
+
+
+</body>
+</html>

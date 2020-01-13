@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">	
+<title>Memesearch! // {{info.username}}</title>
+<link rel="stylesheet" type="text/css" href="/styles.css">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<div id="home-link-div">
+<a href="https://msrch.herokuapp.com/" id="memesearch-link">memesearch</a>
+<a href="https://msrch.herokuapp.com/" id="memesearch-link-mobile">m</a>
+</div>
+<body>
+	<nav>
+{{#if session}}
+<a href="https://msrch.herokuapp.com/profile" id="username-link">{{session.username}}</a>
+<a href="https://msrch.herokuapp.com/logout">log out</a>
+{{else}}
+<a id="create-acct-link" href="https://msrch.herokuapp.com/createacct">create account</a>
+<a href="https://msrch.herokuapp.com/login">log in</a>
+{{/if}}
+</nav>
+<div id="space"></div>
+
+<div id="top-wrap-profile">
+	<div id="top-container">
+
+		<div id="my-profile-container">
+			{{#if isMyProfile}}
+			<p id="edit-profile"><a href="https://msrch.herokuapp.com/editprofile">edit</a></p>
+			{{/if}}
+			<img id="profile-avvy" src="{{info.avvy}}">
+		<i class="fas fa-user"></i><h2 id="profile-username">{{info.username}}</h2>
+
+		<p id="profile-blurb">{{info.blurb}}</p>
+
+		</div>
+		<div id="profile-stats-search-wrap">
+				<div id="stats">
+					<div class="stats-box">
+					<h2 id="clout-stats-head">clout</h2>
+					<p class="stats-count">{{info.clout}}</p>
+					</div>
+					<div class="stats-box">
+					{{#if friends}}
+					<a href="https://msrch.herokuapp.com/users/{{info.username}}/friends">				
+						<h2 id="friends-stats-head">friends</h2>
+					</a>
+					{{else}}
+					<h2 id="friends-stats-head">friends</h2>
+					{{/if}}
+					<p class="stats-count">{{friends}}</p>
+					</div>
+				</div>
+
+				<div id="my-memes-search">
+					<form id="meme-find-form">
+					<input type="text" id="my-search" name="my-memes-searchbox" placeholder="Search my memes"><br>
+					<input type="hidden" id="thisUserProfile" name="thisUser" value="{{info.username}}">
+					<button id="my-find-button">Go</button>
+					</form>
+				</div>
+			</div>
+
+			{{#if session}}
+				{{#if isMyFriend}}
+				
+			<div id="add-friend">
+					<button class="add-friend-status">💕friends</button>
+				</div>
+				{{else if friendRequested}}
+				<button class="add-friend-status">⌛requested</button>
+				{{else}}
+				<div id="add-friend">
+					<button id="add-this-friend">🤗befriend</button>
+				</div>
+				{{/if}}
+			{{else}}
+			{{/if}}
+	</div>
+</div>
+<div id="root">
+ 	<div id ="profile-memes-container">
+ 	</div>
+ </div>
+ <!--
+{{#if favMemes}}
+{{#each favMemes}}
+		<div class="meme-card">
+			<p class="fav-counter">X</p>
+ 			<a href="https://msrch.herokuapp.com/memes/{{this.memeId}}"><img class ="meme-result" src="{{this.imageUrl}}"></a>
+ 				
+ 			<p class="fav-button">❤️ add to favorites</p>
+		</div>
+{{/each}}
+	</div>
+</div>
+{{else}}
+<p id="no-favs">no faves yet<br> sweaty ;)</p>
+{{/if}}
+-->
+<p id="statusP"></p>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.js" type="text/javascript"></script>
+
+<script id="meme-template" type="text/x-handlebars-template">
+	<div class="profile-meme-card">
+			<p id="profile-cmt-clout">\{{clout}} </p>
+			<a href="https://msrch.herokuapp.com/memes/\{{memeId}}">
+				<img class="meme-result" src="\{{imageUrl}}">
+			</a>
+			<p class="fav-button" name="\{{imageUrl}}">❤️ add to favorites</p>
+	</div>
+
+</script>
+<script src="/profile.js"></script>
+
+
+</body>
+
+<!-- enctype ="multipart/form-data" method="post" action="/upload"

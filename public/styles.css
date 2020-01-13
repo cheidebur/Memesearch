@@ -1,0 +1,788 @@
+
+body {
+    background-color: #ffdb8e;
+    font-family: 'Raleway', sans-serif;
+}
+html, body{
+    margin:0px;
+    padding:0px;
+    height: 100%;
+}
+nav {
+    font-family: 'Baloo Chettan';
+    height: 2rem;
+    right: 2em;
+    font-size: 1em;
+    position: fixed;
+    border-bottom-left-radius: 2em;
+}
+#notification-bell {padding-left: 1em;color: #bb757e;background-color: #675858;padding: 0.5em;border-bottom-right-radius: 7px;border-bottom-left-radius: 7px;}
+#notifications-list {
+	display: none;
+	/* border: 1px solid red; */
+	padding: 1em;
+	top: .4em;
+	right: 3.1em;
+	/* margin-left: 4em; */
+	position: fixed;
+	border-top-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	background-color: #bb757e;
+	list-style: none;
+}
+#notification-list-title {
+	color:red;
+}
+#new-notification-alert {
+	/* width: 48%; */
+	cursor: default;
+	margin-left: 5em;
+	background-color: #675858;
+	padding: .2em;
+	text-align: center;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	border-top-left-radius: 10px;
+	position: fixed;
+}
+#new-notification-text {
+	color: #ecf5ea;
+}
+#new-notification-close {
+	color: #d0c3c3;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	background-color: #736969;
+}
+#no-notifications {
+	color: #f1ecec;
+}
+nav a {
+    left: -2px;
+    color: white;
+    padding-left: .1em;
+    padding-right: .1em;
+    text-decoration: none;
+    background-color: #F36F63;
+    padding: 1.2em;
+    padding-bottom: .4em;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+h2 {
+	margin: 0;
+}
+#new-friend-link {
+	color:rgb(253, 255, 17);
+	padding: 0.2em;
+	background-color: #bb757e;
+}
+#username-link {
+	color: rgb(134, 160, 187);
+}
+#memesearch-link {
+	font-family: "Lobster";
+	font-size: 25px;
+	position: fixed;
+	top: .1em;
+	left: 2em;
+	z-index: 2;
+	color: white;
+	text-shadow: 0 0 9px #989898;
+
+}
+#memesearch-link-mobile {
+	color: white;
+	text-shadow: 0 0 9px #989898;
+	font-family: "Lobster";
+	font-size: 2em;
+	padding-left: 0.4em;
+	position: fixed;
+	top: -.2em;
+	display:none;
+}
+/*create account login errors*/
+#error-div {
+	border: 2px solid rgb(255, 112, 115);
+	width: 40%;margin: 0 auto;
+	text-align: center;
+	padding: .2em;
+	margin-bottom: .2em;
+	border-radius: 5px;
+}
+#space {
+	height: 3em;
+}
+#notfound-404-div {
+	font-size: 5em;
+	padding-top:1em;
+ 	color: rgba(81, 84, 113, 0.28);
+	text-align:center;
+}
+#scrolltop {
+	position: fixed;
+	right: .3em;
+	bottom: .3em;
+	font-size:3em;
+	color:rgb(255, 53, 68);
+	display: none;
+}
+.login-container-div {
+	padding-top:4em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.login-form {
+    margin: 0 auto;
+    text-align: center;
+}
+#loginemail, #usernameinput {
+	border: 1px solid orange;
+text-align: center;
+height: 2em;
+margin-bottom: .4em;
+}
+#loginpassword {
+ border: 1px solid orange;
+text-align: center;
+height: 2em;
+
+}
+.container {
+    display: flex;; flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+#memeFindForm {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-bottom:2em;
+	width: 50%;
+	max-width: 30em;
+    margin: 0 auto;
+}
+#memeFindQuery {
+	border: 0;
+	width: 100%;
+	height: 1.4em;
+	text-align: center;
+	font-size: 1.2em;
+	border-top-left-radius: 10px;
+}
+::placeholder {
+	color:#e0e0e0;
+}
+#upload-form {
+	display:flex;padding: 2em;border-radius: 7px;background-color: rgba(205, 216, 202, 0.31);
+	flex-direction:column;align-items: center;
+    width: 60%;
+    height:30%;
+    margin: 0 auto;
+}
+#submit-upload {
+	background-color: rgb(128, 49, 100);color: white;border-radius: 7px;width: 40%;font-size: 1.4em;height: 4em;border: 0;margin-top: 2em;
+}
+#loading-div {
+  display: none;
+  position: fixed;top: 46%; left: calc(50% - 40px); transform: translate(-50%, 0); font-size: 6em;
+  animation-name: spinny;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+}
+@keyframes spinny {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+#myFile {
+	text-align: center;margin: 0 auto;
+}
+
+#imageTags {
+	border: 1px solid orange;
+	font-size: 1.2em;
+	text-align: center;
+}
+.action-header {
+	margin-bottom: 1em;
+	text-align: center;
+	color: rgb(106, 110, 152);
+}
+#find-button {
+    font-size: 1.2em;
+    width: 43%;
+    height: 1.5em;
+    border: none;
+    color:gray;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
+}
+form {
+    text-align: center;
+}
+.memesearch-header {
+	text-shadow: 0 0 9px #989898;
+    text-align: center;
+    font-family: "Lobster";
+  	font-size: 2.3em;
+    margin:0;
+    padding-top: 1.2em;
+    margin-bottom: 0.4em;
+	color: white;
+}
+#no-account {
+    border-top: 10px solid gray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding-top: .3em;
+    text-align: center;
+    z-index:1;
+    position: fixed;
+    width: 52%;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(233, 255, 171);
+    display: none;
+}
+#no-account-text {
+	padding-top: 1em;
+	font-size: 2em;
+}
+#fuck-off {
+	position: absolute;
+	display: inline;
+	right: 1%;
+	top: -2%;
+	width: 8em;
+	font-size: .8em;
+	cursor: pointer;
+}
+#or-login {
+	font-size: 1.3em;
+}
+.meme-result {
+    width: 100%;
+    display: inline-block;
+}
+.card {
+    margin: .3em;
+    width:10.5em;
+}
+.card-avvy {
+	border-radius: 50%;
+	width: 2em;margin-right: 0.3em;
+}
+.fav-counter {
+	font-size: 1.3em;
+	color: rgb(173, 81, 86);
+	background-color: rgba(204, 192, 201, 0.34);
+	padding-left: 0.4em;
+	padding-right: .4em;
+	border-radius: 20px;
+	margin-left: auto;
+	margin-right: 1em;
+}
+p {
+	margin: 0;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.memeauthorlabel{
+	font-size:.8em;
+	display: flex;
+	align-items: center;
+}
+.userlabel {
+	background-color: #f36f63;
+	color: white;
+	padding: .8em;
+	border-top-right-radius: 10px;
+	font-size: .66em;
+}
+.memeauthorlink {
+	text-decoration: none
+}
+#root {
+	padding-top:1em;
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+}
+.memes-container {
+    margin: 0 auto;
+    display: flex;
+    width:80%;
+    justify-content: flex-start;
+}
+.fav-button, .unfav-button {
+	cursor: pointer;
+	border-radius: 10px;
+	color: #9c1b31;
+	font-size: 0.8em;
+	text-align: center;
+}
+#my-find-button {
+    font-size: 1em;
+    width: 7em;
+    border: none;
+	color:gray;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
+	color: rgb(255, 183, 85);
+    font-family: 'Raleway', sans-serif;
+}
+#my-search {
+	font-size: .8em;
+	text-align: center;
+	width: 90%;
+}
+#search-container {
+	display: none;
+	position: fixed;
+	overflow: scroll;
+	height: 80%;
+	background-color: gray;
+	top: 25%;
+}
+#container-append {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly; 
+	margin-top:3em;
+	width: 80%;
+	margin: 0;
+}
+#search-results-head {
+	color: rgba(128, 41, 48, 0.26);
+	font-size: 3em;width: 4em;
+}
+#close-search {
+	position: relative;
+	left: 13em;
+	top: 2em;
+	border-radius: 50%;
+	border: 0;
+	height: 3em;
+	width: 3em;
+	color: white;
+	background-color: rgba(250, 41, 7, 0.61);
+}
+.meme-tags-header {
+	font-size: .7em;
+	margin: 0;
+}
+.meme-tags {
+	margin: 0;
+	margin-top: .2em;
+	font-size: .8em;
+}
+.add-tags-button {
+	cursor:pointer;
+}
+#no-favs {
+	margin:0 auto;
+	font-size: 5em;
+	padding-top: 50px; 
+	color: rgba(81, 84, 113, 0.28);
+}
+#top-wrap-profile {
+	background-color: rgba(185, 182, 188, 0.11);
+	border-top-right-radius: 78px;
+	border-top-left-radius: 78px;
+	width: 90%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	border-bottom-right-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+#top-container {
+	padding-top: .7em;
+	padding-bottom: .4em;
+	display:flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 80%;
+	border-top-left-radius: 8em;
+	border-top-right-radius: 8em;
+	background-color: #d6d1dc40;
+}
+#my-profile-container {
+text-align:center;
+}
+
+/* account deletion styling----*/
+#delete-account-link-text {
+	color:red;
+	text-decoration: underline;
+}
+#submit-delete-button {
+	width: 80%;
+	height: 2em;
+	background-color: green;
+}
+#close-delete-confirm-div {
+	width: 80%;
+	height: 2em;
+	background-color: red;
+}
+#delete-profile-confirm-div {
+	border-radius: 50px;
+	display: none;
+	background-color: gray;
+	margin: 0 auto;
+	width: 50%;
+	height: 40%;	
+}
+#edit-profile-container {
+	border: 1px solid orange;
+	margin: 0 auto;
+	width: 60%;
+	text-align: center;
+}
+#edit-profile-blurb {
+	width: 50%;
+}
+#edit-profile-submit {
+	width: 5em;background-color: rgb(247, 207, 42);font-size: 1.2em;
+}
+#stats {
+	display: flex;
+	margin: 0 auto;
+	width: 10em;
+	font-size: .8em;
+	justify-content: space-around;
+}
+#friends-stats-head, #clout-stats-head {
+	color: rgba(84, 81, 81, 0.33);
+	background-color: rgba(216, 192, 161, 0.3);
+	border-top-right-radius: 15px;
+	padding-left: .2em;
+	padding-right: .2em;
+	padding-top: .2em;
+}
+.stats-count {
+	background-color: rgba(216, 208, 168, 0.42);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	text-align: center;
+	font-size: 2.3em;
+	color: rgb(84, 81, 81);
+}
+#profile-username {
+	display: inline;color: rgb(84, 81, 81);
+}
+#profile-blurb {
+	font-style:italic;
+	color: rgb(124, 20, 125);
+	background-color: #bbbbca2e;
+	border-bottom: 1px solid #dfb0ea;
+	padding: .2em;
+}
+
+
+#profile-avvy {
+	width: 100px;
+	margin: 0 auto;
+	display:block;
+	border-radius: 50%;
+}
+#edit-profile {
+	color: rgb(152, 152, 152);
+	width: 2em;
+	margin: 0 auto .3em auto;
+	font-size: 0.8em;
+	border-radius: 1em;
+	background-color: rgba(128, 128, 128, 0.21);
+}
+#profile-memes-container {
+	display:flex;
+	justify-content: space-evenly;
+	width: 100%;
+	flex-wrap: wrap;
+}
+.profile-meme-card {
+	margin: 0.1em;
+	margin-bottom: .7em;
+	width:10.5em;
+}
+#profile-cmt-clout {
+	width: 2em;
+	 height: 1.5em;
+	 text-align: center;
+	 font-size: .7em;
+	 background-color: rgb(149, 183, 234);
+	 border-radius: 50%;
+}
+/* profile friend styles*/
+#add-friend {
+	background-color: rgba(116, 130, 162, 0.35);
+	border-radius: 5px;
+}
+#add-this-friend {
+	font-size: 1.2em;
+	color: rgb(128, 90, 102);
+	border: 0;
+	background-color: white;
+}
+.add-friend-status {
+	font-size: 1.2em;
+	color: rgb(128, 90, 102);
+	border: 0;
+	background-color: white;
+}
+.meme-postedby {
+	padding: .4em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#uploadedby-uname {
+	font-size: 1em;
+	padding-left: 0.5em;
+	padding-top: .6em;
+	padding-bottom: .6em;
+	padding-right: 0.5em;
+	border-top-right-radius: 15px;
+	background-color: rgb(208, 220, 255);
+}
+#delete-meme {
+	height: 5.3em;
+	width: 6em;
+	border-radius: 10px;
+	background-color: rgb(255, 157, 147);
+	border: 0;
+}
+#control-wrap {
+	display: flex;
+	margin-top: .4em;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+}
+#control-edit-wrap {
+	background-color: rgba(111, 154, 127, 0.17);
+	border-radius: 6px;
+	width: 71%;
+	padding: .5em;
+}
+#uploadedby-avvy {
+	width: 3em;
+	border-radius: 50%;
+	margin-right: .3em;
+}
+.memepage-memecontainer {
+	padding-top:4em;
+	text-align:center;
+}
+.memepage-memeimg {
+	max-width: 17em;
+}
+.memepage-memetags {
+	font-size: 2em;
+	font-family: "Helvetica Neue";
+	max-width: 8em;
+}
+#meme-top-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+#meme-clout {
+	font-size: 2em;
+	color: rgb(173, 81, 86);
+	background-color: rgba(204, 192, 201, 0.34);
+	padding-left: 0.4em;
+	padding-right: .4em;
+	border-radius: 20px;
+}
+#meme-comments-wrap {
+	display: flex;
+	justify-content: center;
+	padding-top: 1.7em;
+}
+#content-comment-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 1.2em;
+}
+#tag-edit-button {
+	background-color: rgb(255, 245, 210);
+	border: 0;
+	width: 54%;
+	border-bottom: 2px solid gray;
+}
+#tag-edit-box {
+	border-radius: 5px;
+	width: 90%;
+	border: 0;
+	font-size: 1em;
+}
+#write-comment {
+	text-align: center;
+}
+#commentbox {
+	width: 17em;
+	font-size: 1em;
+	text-align: center;
+	word-break: break-word;
+	background-color: rgba(135, 150, 167, 0.59);
+	border: 3px solid rgba(134, 138, 84, 0.21);
+	height: 3em;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+#postcomment-button {
+	width: 50%;
+	height: 2em;
+	font-size: 0.7em;
+	border: 0;
+	border-bottom: 2px solid gray;
+	margin-top: .3em;
+}
+#comments {
+	width: 100%;
+	margin-top: 0.9em;
+	display: flex;
+	justify-content: center;
+}
+.comment-wrap {
+	padding-bottom: .4em;
+	padding-top: .3em;
+	word-wrap: break-word;
+}
+#comment-head {
+	font-size: 1.2em;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#cmt-by {
+	font-size: .7em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#cmt-clout {
+	font-size: .6em;
+	background-color: rgba(204, 192, 201, 0.34);
+	padding-left: 0.4em;
+	padding-right: .4em;
+	border-radius: 50%;
+	margin-right: 0.4em;
+}
+#cmt-user-link {
+	font-size: .8em;
+	border-bottom: 1px solid gray;
+}
+#cmt-avvy {
+	border-radius: 50%;
+	width: 2em;
+}
+#comment-body {
+	background-color: rgba(221, 123, 255, 0.16);
+	border-radius: 13px;
+	padding: .4em;
+}
+#comment-text {
+	padding-left: .4em;
+	padding-right: .4em;
+	width: 16em;
+}
+.delete-comment {
+	cursor: default;
+}
+
+/* friends */
+#friends-page-container {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: auto;
+}
+#requests-container {
+	display: flex;
+	justify-content: center;
+}
+.friend-box {
+	width: 80%;
+	display: flex;
+	justify-content: space-evenly;
+}
+.friend-stats {
+	display: flex;
+}
+.friend-recent-memes {
+	border: 1px solid orange;
+}
+.friend-accept-deny {
+	display: flex;
+}
+#accept-friend {
+	background-color: #a3e0a2;
+	border-radius: 25px;
+}
+#deny-friend {
+	background-color: #e0a2a2;
+	border-radius: 25px;
+}
+#delete-friend {
+	background-color: #e0a2a2;
+	border-radius: 25px;
+}
+
+/* media queries */
+@media only screen and (max-width: 620px){
+	#memeFindForm {
+		width: 100%;
+	}
+	#memesearch-link-mobile {
+		display: initial
+	}
+	#memesearch-link {
+		display:none;
+	}
+	.card {
+		width: 7.5em;
+	}
+	.profile-meme-card {
+		width: 7.5em;
+	}
+	.memepage-memecontainer {
+		margin: 0 auto;
+	}
+	#write-comment {
+		padding-top: 0;
+		
+	}
+	.memepage-memetags {
+		font-size: 1.2em;
+	}
+}
+@media only screen and (max-width: 825px) {
+	#meme-top-wrap {
+		width: 90%;
+	}
+	#meme-comments-wrap {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Memesearch! // Register</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Bangers|Bungee+Shade|Lobster|Baloo+Chettan|Raleway" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div id="home-link-div">
+<a href="https://msrch.herokuapp.com/" id="memesearch-link">memesearch</a>
+<a href="https://msrch.herokuapp.com/" id="memesearch-link-mobile">m</a>
+</div>
+<div id="space"></div>
+<h2 class="action-header">Create account</h2>
+<div id="login-container-div">
+  <form class="login-form" name="login-form" method ="post" content-type="application/json" charset="UTF-8" action="/createacct">
+        <input type="text" id="loginemail" name="email" placeholder="email" maxlength="35"><br>
+        <input type="text" id="usernameinput" name="username" placeholder="username" maxlength="15"><br>
+ <input type="password" id="loginpassword" name="password" placeholder="password" maxlength="35"required><br>
+ <input type="submit" id="loginsubmit">
+</form>
+{{#if errors}}
+{{log errors}}
+{{#each errors}}
+<div id="error-div">{{this}}</div>
+{{/each}}
+{{/if}}
+</div>
+
+  
+
+</body>
+</html>
