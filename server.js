@@ -64,9 +64,9 @@ app.get('/', (req, res) => {
 		console.log("user is NOT authenticated.");
 		res.render('main/index.hbs', {
 			hostName: hostName
-		});
+		})
 	}
-});
+})
 
 app.use('/upload', memes);
 
@@ -76,7 +76,7 @@ app.use('/createacct', (req, res) =>{
  res.render('main/register.hbs', {
 	 hostName: hostName
  })
-});
+})
 
 app.use('/login', (req, res) => {
 	res.render('main/login.hbs', {
@@ -97,36 +97,37 @@ app.use('/logout', (req, res) => {
 
 //get a list of meme documents
 app.get("/memeresults", (req, res) => {
-	var memesCollection = db.collection("memes");
-		memesCollectioncollection.find().toArray(function(err, docs) {
+	const memecollection = db.collection("memes");
+
+		memecollection.find().toArray(function(err, docs) {
 			console.log(docs)
 			return res.json(docs);
 		})
 });
 
 //add fav
+//here we have a quick tour of callback hell.
 app.post('/favorite', function(req, res) {
+	const memecollection = db.collection("memes");
+	const usrcollection = db.collection("users");
+
 	if (!req.user) return res.send({loggedIn: false});
 	const favUrl = req.body.favUrl;
-	var memecollection = db.collection("memes");
 	console.log("favoriting this meme Url ", favUrl);
-	var usrcollection = db.collection("users");
 	console.log("favorite endpoint from ", req.user.email);
 	if (req.isAuthenticated()) {
-		memecollection = db.collection("memes");
-		memecollection.findOne({ imageUrl: favUrl }, function(err, thisMeme) {
+		memecollection.findOne({imageUrl: favUrl }, function(err, thisMeme) {
 			if (err) {
-				console.log("error finding meme url or error w Something")
-				console.log(err)
+				return console.log(err);
 			} else {					
 					//check if meme is already favorited, if so don't add clout
 					usrcollection.findOne({email: req.user.email, "favs.memeId": thisMeme._id}, function(err, user) {
 						if (user)  {
-							return console.log("this meme is ALREADY FAVORITED!!")
+							return console.log("This meme is already favorited.")
 						} else {
 							memecollection.update({imageUrl: favUrl}, {$inc: {favorited: 1}}, function(err, result){
-								if (err) console.log(err);
-								console.log("favorited incremented ")
+								if (err) return console.log(err);
+								console.log("favorited incremented");
 								const newFav = new NewFav({
 									memeId: thisMeme._id,
 									dateAdded: Date.now()
@@ -141,7 +142,7 @@ app.post('/favorite', function(req, res) {
 										});
 										res.end();
 								if (req.user.username == thisMeme.imageUploader) {
-									console.log("you can't give yourself clout")
+									console.log("You can't give yourself clout.")
 								} else {
 									usrcollection.findOneAndUpdate({username: thisMeme.imageUploader}, {$inc:{clout: 1}}, function(err, result){
 										console.log("clout added");
@@ -156,23 +157,16 @@ app.post('/favorite', function(req, res) {
 			})
 		}
 	else {
-		console.log('cant save fav cos not logged in babe')
-		const data = {noAcct: true, shit: "FUUUVKKK LOL"}
+		console.log("You can't save a favorite because you're not logged in.");
+		const data = {noAcct: true}
 		res.send( data)
 		}
-	});
+	})
 
-
-
-
-// handle errors
+// run the 404
 app.use("/", function(req, res, next) {
-	
-  
   	res.status(404).render('main/404.hbs', {hostName: hostName});
-
 });
-
 
 app.listen(process.env.PORT || 8080);
 
